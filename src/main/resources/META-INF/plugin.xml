@@ -1,0 +1,55 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.chatgpttool.chatgpttool</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>ChatGPT Tool</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="coolfr490@gmail.com" url="https://github.com/Nazuha26">Nazuha26</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>
+        <![CDATA[
+        <p><b>ChatGPT Tool</b> integrates ChatGPT directly into JetBrains IDEs.</p>
+        <ul>
+            <li>Works with IntelliJ IDEA, PyCharm, CLion, Rider, and more</li>
+            <li>Includes navigation: back, forward, reload, home</li>
+            <li>Send selected code to ChatGPT directly from the editor</li>
+        </ul>
+        <p>Boost your productivity with instant AI help, without leaving the IDE!</p>
+    ]]>
+    </description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <!-- ToolWindow -->
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+                id="ChatGPT"
+                anchor="right"
+                factoryClass="com.chatgpttool.chatgpttool.ChatGptToolWindowFactory"
+                icon="/icons/pluginIcon.svg" />
+    </extensions>
+
+    <actions>
+        <action
+                id="SendToChatGptAction"
+                class="com.chatgpttool.chatgpttool.actions.SendToChatGptAction"
+                text="Send to ChatGPT"
+                description="Send selected code to ChatGPT">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift G"/>
+        </action>
+    </actions>
+
+</idea-plugin>
