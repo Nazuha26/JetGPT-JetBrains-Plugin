@@ -1,8 +1,8 @@
-package com.chatgpttool.chatgpttool
+package com.jetgpt
 
 import com.intellij.ui.jcef.JBCefBrowser
 
-class ChatGptPanelManager private constructor() {
+class JetGptPanelManager private constructor() {
     private var browser: JBCefBrowser? = null
 
     fun setBrowser(browser: JBCefBrowser) {
@@ -12,6 +12,6 @@ class ChatGptPanelManager private constructor() {
     fun getBrowser(): JBCefBrowser? = browser
 
     companion object {
-        val instance = ChatGptPanelManager()
+        val instance = JetGptPanelManager()
     }
 }

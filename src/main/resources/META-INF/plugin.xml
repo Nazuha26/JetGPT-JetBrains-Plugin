@@ -1,11 +1,11 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>com.chatgpttool.chatgpttool</id>
+    <id>com.jetgpt</id>
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>ChatGPT Tool</name>
+    <name>JetGPT</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="coolfr490@gmail.com" url="https://github.com/Nazuha26">Nazuha26</vendor>
@@ -15,7 +15,7 @@
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description>
         <![CDATA[
-        <p><b>ChatGPT Tool</b> integrates ChatGPT directly into JetBrains IDEs.</p>
+        <p><b>JetGPT</b> integrates ChatGPT directly into JetBrains IDEs.</p>
         <ul>
             <li>Works with IntelliJ IDEA, PyCharm, CLion, Rider, and more</li>
             <li>Includes navigation: back, forward, reload, home</li>
@@ -35,18 +35,18 @@
     <!-- ToolWindow -->
     <extensions defaultExtensionNs="com.intellij">
         <toolWindow
-                id="ChatGPT"
+                id="JetGPT"
                 anchor="right"
-                factoryClass="com.chatgpttool.chatgpttool.ChatGptToolWindowFactory"
-                icon="/icons/pluginIcon.svg" />
+                factoryClass="com.jetgpt.JetGptToolWindowFactory"
+                icon="/icons/chatgpt_13x13.svg" />
     </extensions>
 
     <actions>
         <action
-                id="SendToChatGptAction"
-                class="com.chatgpttool.chatgpttool.actions.SendToChatGptAction"
-                text="Send to ChatGPT"
-                description="Send selected code to ChatGPT">
+                id="SendToJetGptAction"
+                class="com.jetgpt.actions.SendToJetGptAction"
+                text="Send to JetGPT"
+                description="Send selected code to JetGPT">
             <add-to-group group-id="EditorPopupMenu" anchor="last"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift G"/>
         </action>

@@ -1,17 +1,17 @@
-package com.chatgpttool.chatgpttool.actions
+package com.jetgpt.actions
 
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.project.Project
-import com.chatgpttool.chatgpttool.ChatGptPanelManager
+import com.jetgpt.JetGptPanelManager
 import com.intellij.openapi.util.IconLoader
 import javax.swing.Icon
 import javax.swing.JOptionPane
 
-class SendToChatGptAction : AnAction("Send to ChatGPT", "Send selected code to ChatGPT", icon) {
+class SendToJetGptAction : AnAction("Send to JetGPT", "Send selected code to JetGPT", icon) {
     companion object {
-        val icon: Icon = IconLoader.getIcon("/icons/chatgpt_16x16.svg", SendToChatGptAction::class.java)
+        val icon: Icon = IconLoader.getIcon("/icons/chatgpt_16x16.svg", SendToJetGptAction::class.java)
     }
 
     override fun update(e: AnActionEvent) {
@@ -31,9 +31,9 @@ class SendToChatGptAction : AnAction("Send to ChatGPT", "Send selected code to C
             .replace("\n", "\\n")
 
         // Достаём браузер из панели
-        val jbBrowser = ChatGptPanelManager.instance.getBrowser()
+        val jbBrowser = JetGptPanelManager.instance.getBrowser()
         if (jbBrowser == null) {
-            JOptionPane.showMessageDialog(null, "ChatGPT ToolWindow not initialized.")
+            JOptionPane.showMessageDialog(null, "JetGPT ToolWindow not initialized.")
             return
         }
 
