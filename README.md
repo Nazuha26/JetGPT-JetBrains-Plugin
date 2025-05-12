@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/preview.png" alt="JetGPT preview" width="1920"/>
+</p>
+
 # JetGPT v1.0.0
 
 JetGPT is a **simple AI helper** inside your JetBrains IDE.  
