@@ -47,7 +47,7 @@
                 class="com.jetgpt.actions.SendToJetGptAction"
                 text="Send to JetGPT"
                 description="Send selected code to JetGPT">
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift G"/>
         </action>
     </actions>

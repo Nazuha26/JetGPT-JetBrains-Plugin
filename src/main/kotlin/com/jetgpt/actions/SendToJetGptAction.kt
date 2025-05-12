@@ -30,7 +30,6 @@ class SendToJetGptAction : AnAction("Send to JetGPT", "Send selected code to Jet
             .replace("\"", "\\\"")
             .replace("\n", "\\n")
 
-        // Достаём браузер из панели
         val jbBrowser = JetGptPanelManager.instance.getBrowser()
         if (jbBrowser == null) {
             JOptionPane.showMessageDialog(null, "JetGPT ToolWindow not initialized.")
