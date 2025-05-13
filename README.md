@@ -2,7 +2,14 @@
   <img src="docs/preview.png" alt="JetGPT preview" width="1920"/>
 </p>
 
-# JetGPT v1.0.0
+# JetGPT v1.0.1
+
+### What's new in `v1.0.1`
+- Added **"About"** button
+- Improved **"Send to JetGPT"** action: multiline support, proper formatting, auto focus and cursor positioning
+- Minor UI improvements and layout cleanup
+
+---
 
 JetGPT is a **simple AI helper** inside your JetBrains IDE.  
 It opens ChatGPT in a side Tool Window, so you can talk to it without leaving the code editor.

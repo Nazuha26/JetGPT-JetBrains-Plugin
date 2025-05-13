@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.jetgpt"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -16,6 +16,10 @@ intellij {
     type.set("IC") // Target IDE Platform
 
     plugins.set(listOf("java", "Kotlin"))
+}
+
+dependencies {
+    implementation("org.json:json:20231013")
 }
 
 tasks {

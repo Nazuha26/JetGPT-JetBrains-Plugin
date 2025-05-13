@@ -1,5 +1,6 @@
 package com.jetgpt
 
+import com.intellij.ide.BrowserUtil
 import com.intellij.openapi.actionSystem.ActionManager
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -111,7 +112,15 @@ class JetGptToolWindowFactory : ToolWindowFactory {
             }
         }
 
-
+        val aboutAction = object : AnAction(
+            "About",
+            "Open plugin GitHub page",
+            IconLoader.getIcon("/icons/about_16x16.svg", javaClass)
+        ) {
+            override fun actionPerformed(e: AnActionEvent) {
+                BrowserUtil.browse("https://github.com/Nazuha26/JetGPT-JetBrains-Plugin")
+            }
+        }
 
         val toolbarLeftGroup = DefaultActionGroup().apply {
             add(backAction)
@@ -122,6 +131,7 @@ class JetGptToolWindowFactory : ToolWindowFactory {
 
         val toolbarRightGroup = DefaultActionGroup().apply {
             add(loginAction)
+            add(aboutAction)
         }
 
         val toolbarLeft = ActionManager.getInstance()

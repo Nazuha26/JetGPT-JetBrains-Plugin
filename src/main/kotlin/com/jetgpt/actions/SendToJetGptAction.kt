@@ -8,6 +8,8 @@ import com.jetgpt.JetGptPanelManager
 import com.intellij.openapi.util.IconLoader
 import javax.swing.Icon
 import javax.swing.JOptionPane
+import org.json.JSONObject
+
 
 class SendToJetGptAction : AnAction("Send to JetGPT", "Send selected code to JetGPT", icon) {
     companion object {
@@ -25,10 +27,7 @@ class SendToJetGptAction : AnAction("Send to JetGPT", "Send selected code to Jet
         val editor = e.getData(CommonDataKeys.EDITOR) ?: return
         val selectedText = editor.selectionModel.selectedText ?: return
 
-        val safeText = selectedText
-            .replace("\\", "\\\\")
-            .replace("\"", "\\\"")
-            .replace("\n", "\\n")
+        val jsSafeText = JSONObject.quote(selectedText)
 
         val jbBrowser = JetGptPanelManager.instance.getBrowser()
         if (jbBrowser == null) {
@@ -41,8 +40,25 @@ class SendToJetGptAction : AnAction("Send to JetGPT", "Send selected code to Jet
             (function() {
                 const editor = document.querySelector('div.ProseMirror[id="prompt-textarea"]');
                 if (editor) {
-                    editor.innerText = "$safeText";
+                    const existing = editor.innerText.trim();
+                    const selected = $jsSafeText;
+                    
+                    const toInsert = existing
+                        ? existing + "\n\n" + selected + "\n\n\n"
+                        : selected + "\n\n\n";
+        
+                    editor.innerText = toInsert;
                     editor.dispatchEvent(new InputEvent('input', { bubbles: true }));
+                    editor.focus();
+                    
+                    // set cursor to the end of the prompt area
+                    const range = document.createRange();
+                    range.selectNodeContents(editor);
+                    range.collapse(false);
+
+                    const selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.addRange(range);
                 } else {
                     console.log("=== ERR - NOT FOUND editor .ProseMirror");
                 }
@@ -51,5 +67,7 @@ class SendToJetGptAction : AnAction("Send to JetGPT", "Send selected code to Jet
             jbBrowser.cefBrowser.url,
             0
         )
+
+        jbBrowser.component.requestFocusInWindow()
     }
 }
